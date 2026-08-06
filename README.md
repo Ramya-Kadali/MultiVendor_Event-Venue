@@ -1,16 +1,16 @@
-# 🎉 Multi-Vendor Event & Venue Booking Platform
+# Multi-Vendor Event & Venue Booking Platform
 
-A full-stack web application that enables users to discover, book, and manage events and venues through a unified platform. The platform supports multiple vendors, secure booking management, PayPal payment integration, and role-based access for Users, Vendors, and Administrators.
-
----
-
-# 📌 Project Overview
-
-The Multi-Vendor Event & Venue Booking Platform simplifies the process of discovering and booking venues and events. Vendors can register and manage their listings, while administrators oversee vendor approvals and platform management. Users can browse events and venues, make bookings, and complete payments securely through PayPal Sandbox.
+A full-stack web application that enables users to discover, book, and manage events and venues through a unified platform. The system supports multiple vendors, secure booking management, PayPal payment integration, and role-based access for Users, Vendors, and Administrators.
 
 ---
 
-# ✨ Features
+# Project Overview
+
+The Multi-Vendor Event & Venue Booking Platform simplifies the process of discovering, booking, and managing events and venues. Users can browse available events and venues, make secure bookings, and complete payments through PayPal Sandbox. Vendors can manage their events and venues, while administrators monitor and manage the overall platform.
+
+---
+
+# Features
 
 ## User
 - User Registration & Login
@@ -18,19 +18,19 @@ The Multi-Vendor Event & Venue Booking Platform simplifies the process of discov
 - View Event & Venue Details
 - Book Events and Venues
 - PayPal Sandbox Payment
-- View Booking History
-- Manage Profile
+- Booking History
+- Profile Management
 
 ## Vendor
 - Vendor Registration & Login
-- Add, Update, Delete Venues
-- Add, Update, Delete Events
-- Manage Bookings
-- View Dashboard
+- Add, Update and Delete Venues
+- Add, Update and Delete Events
+- View & Manage Bookings
+- Vendor Dashboard
 
 ## Admin
 - Admin Login
-- Approve or Reject Vendors
+- Approve/Reject Vendor Requests
 - Manage Users
 - Manage Events
 - Manage Venues
@@ -38,7 +38,7 @@ The Multi-Vendor Event & Venue Booking Platform simplifies the process of discov
 
 ---
 
-# 🛠 Tech Stack
+# Tech Stack
 
 ## Backend
 - Java
@@ -51,33 +51,39 @@ The Multi-Vendor Event & Venue Booking Platform simplifies the process of discov
 - CSS
 - JavaScript
 
+## Database
+- MySQL
+
 ## Payment Gateway
 - PayPal Sandbox API
 
-## Tools
+## Tools & Platforms
 - Eclipse IDE
 - VS Code
 - Postman
-- Git & GitHub
+- MySQL Workbench
+- Git
+- GitHub
 
 ---
 
-# 🏗 Project Modules
+# Project Modules
 
 ### Authentication Module
-- User Login & Registration
-- Vendor Login & Registration
-- Admin Login
+- User Authentication
+- Vendor Authentication
+- Admin Authentication
 
 ### User Module
-- Browse Events & Venues
-- Book Events & Venues
-- Payment Management
+- Event Browsing
+- Venue Browsing
+- Booking Management
 - Booking History
+- Payment
 
 ### Vendor Module
-- Venue Management
 - Event Management
+- Venue Management
 - Booking Management
 
 ### Admin Module
@@ -88,37 +94,29 @@ The Multi-Vendor Event & Venue Booking Platform simplifies the process of discov
 
 ### Payment Module
 - PayPal Sandbox Integration
-- Booking Confirmation
+- Payment Confirmation
 
 ---
 
-# 💳 Payment Integration
-
-The application integrates **PayPal Sandbox API** to simulate secure online payments during the booking process.
-
-Features:
-- Secure Payment Processing
-- Booking Confirmation
-- Payment Status Tracking
-
----
-
-# 🔒 Security
+# Security
 
 - Role-Based Access Control
 - Input Validation
 - Exception Handling
-- Secure Authentication
+- JWT Authentication
 
 ---
 
-# ▶️ How to Run the Application
+# How to Run the Application
 
 ## Prerequisites
+
+Install the following software:
 
 - Java 17 or later
 - Maven
 - Node.js (18+ recommended)
+- npm
 - MySQL Server
 - Eclipse IDE (Backend)
 - VS Code (Frontend)
@@ -128,36 +126,79 @@ Features:
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/MultiVendor_Event-Venue.git
+git clone https://github.com/your-username/MultiVendor_Event-venue.git
 ```
+
+Navigate to the project directory.
 
 ---
 
 ## Backend Setup
 
-Navigate to the backend folder:
+Open the backend project in Eclipse IDE.
 
-```bash
-cd backend
-```
-
-Configure your database credentials in:
+Open:
 
 ```
 src/main/resources/application.properties
 ```
 
-Run the Spring Boot application:
+Configure the following properties using your own credentials.
 
-Using Maven:
+### Database Configuration
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/eventvenue_db
+spring.datasource.username=YOUR_DATABASE_USERNAME
+spring.datasource.password=YOUR_DATABASE_PASSWORD
+```
+
+### Email Configuration
+
+```properties
+spring.mail.username=YOUR_EMAIL_ADDRESS
+spring.mail.password=YOUR_APP_PASSWORD
+```
+
+> If using Gmail, generate an App Password instead of using your Gmail account password.
+
+### JWT Configuration
+
+```properties
+jwt.secret=YOUR_SECRET_KEY
+```
+
+### PayPal Sandbox Configuration
+
+```properties
+paypal.client.id=YOUR_PAYPAL_CLIENT_ID
+paypal.client.secret=YOUR_PAYPAL_CLIENT_SECRET
+paypal.mode=sandbox
+```
+
+Create PayPal Sandbox credentials from:
+
+https://developer.paypal.com/
+
+### Stripe Configuration (Optional)
+
+```properties
+stripe.api.secret-key=YOUR_STRIPE_SECRET_KEY
+```
+
+Generate your Stripe API key from:
+
+https://dashboard.stripe.com/apikeys
+
+Run the Spring Boot application:
 
 ```bash
 mvn spring-boot:run
 ```
 
-Or run the project directly from **Eclipse IDE** as a Spring Boot Application.
+or run it directly from Eclipse as a Spring Boot Application.
 
-The backend will start on:
+Backend URL:
 
 ```
 http://localhost:8080
@@ -167,11 +208,7 @@ http://localhost:8080
 
 ## Frontend Setup
 
-Navigate to the frontend folder:
-
-```bash
-cd frontend
-```
+Open the frontend folder using VS Code.
 
 Install dependencies:
 
@@ -179,13 +216,19 @@ Install dependencies:
 npm install --legacy-peer-deps
 ```
 
-Start the Next.js development server:
+If dependency conflicts occur:
+
+```bash
+npm install --force
+```
+
+Start the application:
 
 ```bash
 npm run dev
 ```
 
-Open your browser and visit:
+Frontend URL:
 
 ```
 http://localhost:3000
@@ -193,34 +236,36 @@ http://localhost:3000
 
 ---
 
-# 👨‍💻 My Contributions
+# My Contributions
 
 - Developed the backend using Spring Boot.
 - Designed and implemented business logic.
-- Developed RESTful APIs for user, vendor, admin, event, venue, and booking modules.
+- Implemented authentication for Users, Vendors, and Administrators.
+- Developed booking management functionality.
 - Integrated Hibernate/JPA with MySQL.
-- Implemented PayPal Sandbox payment integration.
+- Integrated PayPal Sandbox payment gateway.
 - Ensured seamless communication between the Next.js frontend and Spring Boot backend.
-- Tested APIs using Postman.
+- Tested backend APIs using Postman.
 - Collaborated with team members during development.
 
 ---
 
-# 📚 Learning Outcomes
+# Learning Outcomes
 
 - Spring Boot Development
 - Hibernate & JPA
-- Backend API Development
+- Backend Development
 - Payment Gateway Integration
-- Full-Stack Application Development
-- API Integration
+- Frontend-Backend Integration
+- RESTful Service Development
 - Version Control using Git & GitHub
 - Team Collaboration
 
 ---
 
-# 👥 Team Size
+# Team Size
 
-**4 Members**
+4 Members
 
 ---
+
